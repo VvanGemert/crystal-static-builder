@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  crystal-static-builder:
+    build:
+      context: ./
+    volumes:
+      - ./:/mnt/hdd
+    command: '/bin/ash'
+    stdin_open: true
+    tty: true

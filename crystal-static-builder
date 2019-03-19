@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$1" == "build" ]
+then
+  docker-compose -f docker-compose.yml build
+elif [ "$1" == "start" ]
+then
+  docker-compose -f docker-compose.yml up -d
+elif [ "$1" == "stop" ]
+then
+  docker-compose -f docker-compose.yml stop
+elif [ "$1" == "ssh" ]
+then
+  docker-compose -f docker-compose.yml exec crystal-static-builder /bin/ash
+elif [ "$1" == "clean" ]
+then
+  docker-compose -f docker-compose.yml stop
+  docker-compose -f docker-compose.yml rm
+else
+  echo "Crystal Static Builder"
+  echo "--------------------------------"
+  echo "./crystal-static-builder build - Builds docker images from Dockerfile"
+  echo "./crystal-static-builder start - Run docker containers in background"
+  echo "./crystal-static-builder stop - Stop docker containers"
+  echo "./crystal-static-builder clean - Remove containers"
+  echo "./crystal-static-builder ssh - Access docker container"
+  echo ""
+fi
